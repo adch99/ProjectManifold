@@ -1,0 +1,41 @@
+#!/bin/bash
+# Set Wallpaper with Nitrogen
+nitrogen --restore
+
+# Start Compositor
+#xcompmgr &
+#DRI_PRIME=1 compton & # Change this to a more specific run by supplying args.
+compton & 
+
+# Start conky
+#conky -c $HOME/.config/conky/openbox_session.conf &
+
+# Start Dock
+#latte-dock --import $HOME/.config/openbox/lattedock_openbox_rc &
+#plank &
+
+# Start tint2
+#tint2 -c $HOME/.config/tint2/openbox_session.conf &
+
+# Start pa-applet (Systray icon for Volume using PulseAudio)
+#pa-applet &
+
+# Start redshift (blue light control) with applet in systray
+redshift-gtk &
+
+# Fire up the IISER Login Portal
+#firefox http://detectportal.firefox.com/success.txt &
+
+# Set tapping on touchpad on: xinput set-prop device_id prop_id value
+# To see device_id use xinput list
+# To see prop_id use xinput list-props device_id
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
+
+# Start dunst for notifications
+dunst &
+
+# Start the notification daemon notify-osd (other option is dunst)
+#/usr/lib/x86_64-linux-gnu/notify-osd &
+
+# Start the polybar bar
+$HOME/Builds/polybar-3.5.4/build/bin/polybar -c $HOME/.config/polybar/config.ini firstbar &
