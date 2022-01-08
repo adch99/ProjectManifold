@@ -29,5 +29,8 @@ fi
 # ~/Applications, adding it to the path in order to access
 # AppImages
 if [ -d ~/Applications ]; then
-    export PATH="/home/aditya/Applications:$PATH"
+    PATH="/home/aditya/Applications:$PATH"
 fi
+
+# Make Qt Apps follow theme set by qt5ct
+export QT_QPA_PLATFORMTHEME="qt5ct"

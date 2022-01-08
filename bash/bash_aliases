@@ -31,3 +31,13 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias apostrophe='flatpak run org.gnome.gitlab.somas.Apostrophe'
 alias desmume='flatpak run org.desmume.DeSmuME'
 alias bookworm="flatpak run com.github.babluboy.bookworm"
+
+# Alias for user env-preserving sudo
+alias presudo='sudo -E env "PATH=$PATH"'
+
+# Easy alias for exo-open
+alias eopen='exo-open'
+
+# Aliases for cd'ing into directories
+alias qkr='cd ~/Documents/QuantumKickedRotor && conda activate rmt'
+alias fock='cd ~/Documents/Localisation/fockspace && conda activate coupling'
