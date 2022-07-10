@@ -145,4 +145,5 @@ unset __conda_setup
 export PYTHONPATH=".:$PYTHONPATH"
 
 # Make Qt Apps follow theme set by qt5ct
-#export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+. "$HOME/.cargo/env"

@@ -1,16 +1,16 @@
 configuration {
-    modi: "run,window";
-/*	width: 50;*/
-/*	lines: 15;*/
+    modi: "drun,places:.config/rofi/rofi_bookmarks.py";
+	width: 40;
+	lines: 5;
 /*	columns: 1;*/
-    font: "Hack 14";
+    font: "Ubuntu Regular 25";
 /*	bw: 1;*/
 /*	location: 0;*/
-	padding: 5;
+	padding: 100;
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
-/*	fixed-num-lines: true;*/
-/*	show-icons: false;*/
+	fixed-num-lines: true;
+	show-icons: true;
     terminal: "konsole";
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
@@ -19,30 +19,32 @@ configuration {
 /*	run-shell-command: "{terminal} -e {cmd}";*/
 /*	window-command: "wmctrl -i -R {window}";*/
 /*	window-match-fields: "all";*/
-/*	icon-theme: ;*/
+	icon-theme: "Gruvbox-Material-Dark";
 /*	drun-match-fields: "name,generic,exec,categories";*/
+	drun-match-fields: "name,generic";
 /*	drun-show-actions: false;*/
 /*	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";*/
-/*	disable-history: false;*/
+	drun-display-format: "{name}";
+	disable-history: false;
 /*	ignored-prefixes: "";*/
 	sort: true;
 /*	sorting-method: ;*/
 /*	case-sensitive: false;*/
 /*	cycle: true;*/
 /*	sidebar-mode: false;*/
-/*	eh: 1;*/
+	eh: 1;
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
 /*	combi-modi: "window,run";*/
-/*	matching: "normal";*/
+	matching: "normal";
 /*	tokenize: true;*/
 /*	m: "-5";*/
 /*	line-margin: 2;*/
-/*	line-padding: 1;*/
+	line-padding: 10;
 /*	filter: ;*/
 /*	separator-style: "dash";*/
-/*	hide-scrollbar: false;*/
+	hide-scrollbar: true;
 /*	fullscreen: false;*/
 /*	fake-transparency: false;*/
 /*	dpi: -1;*/
@@ -56,8 +58,8 @@ configuration {
     theme: ".config/rofi/theme.rasi";
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
-    color-active: #f2a365;
-    color-window: #222831  ;
+/*  color-active: #f2a365;*/
+/*  color-window: #222831  ;*/
 /*	max-history-size: 25;*/
 /*	combi-hide-mode-prefix: false;*/
 /*	matching-negate-char: '-' /* unsupported */;*/
@@ -67,7 +69,7 @@ configuration {
 /*	display-windowcd: ;*/
 /*	display-run: ;*/
 /*	display-ssh: ;*/
-/*	display-drun: ;*/
+	display-drun: "> ";
 /*	display-combi: ;*/
 /*	display-keys: ;*/
 /*	kb-primary-paste: "Control+V,Shift+Insert";*/

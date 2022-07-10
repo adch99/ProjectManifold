@@ -34,3 +34,13 @@ fi
 
 # Make Qt Apps follow theme set by qt5ct
 export QT_QPA_PLATFORMTHEME="qt5ct"
+
+# Adding spicetify to PATH
+export SPICETIFY_INSTALL="/home/aditya/.spicetify"
+if [ -d $SPICETIFY_INSTALL ]; then
+    PATH="$SPICETIFY_INSTALL:$PATH"
+fi
+. "$HOME/.cargo/env"
+
+# Set default editor to vim
+export EDITOR="vim"

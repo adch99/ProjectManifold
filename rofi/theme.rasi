@@ -3,11 +3,12 @@
  * Rofi version: 1.5.4
  **/
 * {
-    foreground:                  #ececec;
-    background:                  #222831;
-    primary-highlight:           #f2a365;
-    secondary-highlight:         #30475e;
-    red:                         rgba ( 220, 50, 47, 100 % );
+    foreground:                  #ebdbb2;
+    background:                  #282828;
+    selected-foreground:         #fbf1c7;
+    primary-highlight:           #689d6a;
+    secondary-highlight:         #665c54;
+    urgent-highlight:            #cc241d;
     background-color:            var(background);
     normal-foreground:           var(foreground);
     normal-background:           var(background);
@@ -17,48 +18,49 @@
     active-background:           var(background);
     alternate-active-foreground: var(foreground);
     alternate-active-background: var(background);
-    selected-active-foreground:  var(foreground);
+    selected-active-foreground:  var(selected-foreground);
     selected-active-background:  var(primary-highlight);
-    selected-normal-foreground:  var(foreground);
+    selected-normal-foreground:  var(selected-foreground);
     selected-normal-background:  var(secondary-highlight);
     urgent-foreground:           var(foreground);
     urgent-background:           var(primary-highlight);
-    selected-urgent-foreground:  var(foreground);
-    selected-urgent-background:  var(red);
+    selected-urgent-foreground:  var(selected-foreground);
+    selected-urgent-background:  var(urgent-highlight);
     alternate-urgent-foreground: var(foreground);
-    alternate-urgent-background: var(red);
+    alternate-urgent-background: var(urgent-highlight);
     separatorcolor:              var(foreground);
     border-color:                var(secondary-highlight);
-    spacing:                     2;
+    spacing:                     10;
 }
 window {
-    padding:          5;
+    padding:          10;
     background-color: var(background);
     border:           2;
 }
 mainbox {
-    padding: 0;
+    padding: 10;
     border:  0;
 }
 message {
     padding:      1px ;
     border-color: var(separatorcolor);
-    border:       2px dash 0px 0px ;
+    border:       2px solid 0px 0px ;
 }
 textbox {
     text-color: var(foreground);
 }
 listview {
-    padding:      2px 0px 0px ;
+    padding:      2px 2px 2px;
     scrollbar:    false;
     border-color: var(separatorcolor);
     spacing:      2px ;
     fixed-height: 0;
-    border:       2px dash 0px 0px ;
+    border:       2px solid 0px 0px ;
 }
 element {
-    padding: 1px ;
+    padding: 10px ;
     border:  0;
+    border-radius: 8px;
 }
 element normal.normal {
     background-color: var(normal-background);
@@ -119,7 +121,8 @@ inputbar {
     padding:    1px ;
     spacing:    0px ;
     text-color: var(normal-foreground);
-    children:   [ prompt,textbox-prompt-colon,entry,overlay,case-indicator ];
+/*    children:   [ prompt,textbox-prompt-colon,entry,overlay,case-indicator ];*/
+    children:   [ prompt, entry ];
 }
 case-indicator {
     spacing:    0;

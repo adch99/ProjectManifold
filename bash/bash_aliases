@@ -41,3 +41,4 @@ alias eopen='exo-open'
 # Aliases for cd'ing into directories
 alias qkr='cd ~/Documents/QuantumKickedRotor && conda activate rmt'
 alias fock='cd ~/Documents/Localisation/fockspace && conda activate coupling'
+alias mbl='cd ~/Documents/SOMBL && codium .'
