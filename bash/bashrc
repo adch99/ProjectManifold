@@ -58,22 +58,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # Save the default term in PS_DEFAULT and set alternative term
 PS_DEFAULT="$PS1"
 
@@ -85,12 +69,6 @@ PS1="\[\e[1;32m\]\$\[\e[m\] "
 
 # With purple $ prompt
 #PS1="\[\e[1;35m\]\$\[\e[m\] "
-
-# ~/Applications, adding it to the path in order to access
-# AppImage applications
-if [ -d ~/Applications ]; then
-    export PATH="/home/aditya/Applications:$PATH"
-fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -112,30 +90,21 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-# Texlive installation directories
-if [ -d /usr/local/texlive/2021/bin/x86_64-linux ]; then
-    PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"; export PATH
-fi
-
-if [ -d /usr/local/texlive/2021/texmf-dist/doc/info ]; then
-    INFOPATH="/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH"; export INFOPATH
-fi
-
-if [ -d /usr/local/texlive/2021/texmf-dist/doc/man ]; then
-    MANPATH="/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH"; export MANPATH
+# Set all the required paths
+if [ -f "$HOME/.setpath" ]; then
+    source "$HOME/.setpath"
 fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/aditya/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/miniconda/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/aditya/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/aditya/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/miniconda/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/aditya/miniconda3/bin:$PATH"
+        export PATH="/opt/miniconda/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -144,6 +113,12 @@ unset __conda_setup
 # Set PYTHONPATH
 export PYTHONPATH=".:$PYTHONPATH"
 
-# Make Qt Apps follow theme set by qt5ct
-export QT_QPA_PLATFORMTHEME="qt5ct"
+# Set default editor to vim
+export EDITOR="vim"
+
+
 . "$HOME/.cargo/env"
+
+# Setting the env vars for Intel MKL / oneAPI
+. /opt/intel/oneapi/setvars.sh > /dev/null
+export GEM_HOME=$(ruby -e 'puts Gem.user_dir')

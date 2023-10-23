@@ -16,31 +16,16 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+# Set all the required paths
+if [ -f "$HOME/.setpath" ]; then
+    source "$HOME/.setpath"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# ~/Applications, adding it to the path in order to access
-# AppImages
-if [ -d ~/Applications ]; then
-    PATH="/home/aditya/Applications:$PATH"
-fi
-
-# Make Qt Apps follow theme set by qt5ct
-export QT_QPA_PLATFORMTHEME="qt5ct"
-
-# Adding spicetify to PATH
-export SPICETIFY_INSTALL="/home/aditya/.spicetify"
-if [ -d $SPICETIFY_INSTALL ]; then
-    PATH="$SPICETIFY_INSTALL:$PATH"
+# If running on Wayland run firefox in Wayland mode
+if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
 fi
 . "$HOME/.cargo/env"
 
-# Set default editor to vim
-export EDITOR="vim"
+# Environment variable for ssh-agent system service
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

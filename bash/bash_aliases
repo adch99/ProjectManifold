@@ -14,14 +14,22 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Defaults options for exa
+EXA_OPTS='--icons --group-directories-first'
 # some more ls aliases
+alias ls='exa $EXA_OPTS'
 alias ll='ls -alF'
-alias la='ls -A'
+# This convention is correct for ls
+# but not for exa 
+# alias la='ls -A'
+# This one will work for both
+alias la='ls -a'
 alias l='ls -CF'
 
 alias octave-cli='octave-cli -q'
 alias npp='notepad-plus-plus'
-alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E --color=never "state|to\ full|to\ empty|percentage"'
+# alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E --color=never "state|to\ full|to\ empty|percentage"'
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E --color=never "state|to full|to empty|percentage"'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -42,3 +50,14 @@ alias eopen='exo-open'
 alias qkr='cd ~/Documents/QuantumKickedRotor && conda activate rmt'
 alias fock='cd ~/Documents/Localisation/fockspace && conda activate coupling'
 alias mbl='cd ~/Documents/SOMBL && codium .'
+
+# Alias for easy reading of make output
+alias mkless='make 2>&1 | less -R'
+
+# Alias for easy git log viewing
+alias gitlog='git log --graph --oneline --all'
+
+# Run inkscape from flatpak
+alias flatink='flatpak run org.inkscape.Inkscape'
+
+#alias mangohud='flatpak run org.freedesktop.Platform.VulkanLayer.MangoHud'
