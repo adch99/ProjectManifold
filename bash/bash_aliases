@@ -15,9 +15,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Defaults options for exa
-EXA_OPTS='--icons --group-directories-first'
+#EXA_OPTS='--icons --group-directories-first'
 # some more ls aliases
-alias ls='exa $EXA_OPTS'
+#alias ls='exa $EXA_OPTS'
 alias ll='ls -alF'
 # This convention is correct for ls
 # but not for exa 
@@ -52,7 +52,7 @@ alias fock='cd ~/Documents/Localisation/fockspace && conda activate coupling'
 alias mbl='cd ~/Documents/SOMBL && codium .'
 
 # Alias for easy reading of make output
-alias mkless='make 2>&1 | less -R'
+alias mkless='make -j$(nproc) 2>&1 | less -R'
 
 # Alias for easy git log viewing
 alias gitlog='git log --graph --oneline --all'
@@ -61,3 +61,7 @@ alias gitlog='git log --graph --oneline --all'
 alias flatink='flatpak run org.inkscape.Inkscape'
 
 #alias mangohud='flatpak run org.freedesktop.Platform.VulkanLayer.MangoHud'
+
+alias pltee='proglesstee'
+
+alias gtime='~/.local/bin/time'

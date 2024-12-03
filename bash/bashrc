@@ -95,21 +95,6 @@ if [ -f "$HOME/.setpath" ]; then
     source "$HOME/.setpath"
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniconda/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 # Set PYTHONPATH
 export PYTHONPATH=".:$PYTHONPATH"
 
@@ -117,8 +102,38 @@ export PYTHONPATH=".:$PYTHONPATH"
 export EDITOR="vim"
 
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # Setting the env vars for Intel MKL / oneAPI
-. /opt/intel/oneapi/setvars.sh > /dev/null
-export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+# . /opt/intel/oneapi/setvars.sh > /dev/null
+# export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/users/achincholi/Documents/CodeEnvs/Python/Miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/users/achincholi/Documents/CodeEnvs/Python/Miniconda/etc/profile.d/conda.sh" ]; then
+        . "/users/achincholi/Documents/CodeEnvs/Python/Miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/users/achincholi/Documents/CodeEnvs/Python/Miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gcr/ssh"
+# export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/keyring/ssh"
+
+if pgrep -u "$USER" gcr-ssh-agent > /dev/null; then
+    killall gcr-ssh-agent
+fi
+
+# Run ssh-agent if not already running
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 8h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
