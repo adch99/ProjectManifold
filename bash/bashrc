@@ -116,9 +116,3 @@ export PYTHONPATH=".:$PYTHONPATH"
 # Set default editor to vim
 export EDITOR="vim"
 
-
-. "$HOME/.cargo/env"
-
-# Setting the env vars for Intel MKL / oneAPI
-. /opt/intel/oneapi/setvars.sh > /dev/null
-export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
