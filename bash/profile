@@ -17,9 +17,9 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # Set all the required paths
-# if [ -f "$HOME/.setpath" ]; then
-#     source "$HOME/.setpath"
-# fi
+if [ -f "$HOME/.setpath" ]; then
+    source "$HOME/.setpath"
+fi
 
 # If running on Wayland run firefox in Wayland mode
 if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
