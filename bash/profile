@@ -25,7 +25,7 @@ fi
 if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     export MOZ_ENABLE_WAYLAND=1
 fi
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
 
 # Environment variable for ssh-agent system service
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
