@@ -116,3 +116,5 @@ export PYTHONPATH=".:$PYTHONPATH"
 # Set default editor to vim
 export EDITOR="vim"
 
+# Set up Oh My Bash stuff
+source $HOME/.ohmybashrc
