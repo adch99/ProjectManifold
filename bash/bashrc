@@ -118,3 +118,5 @@ export EDITOR="vim"
 
 # Set up Oh My Bash stuff
 source $HOME/.ohmybashrc
+
+. "$HOME/.local/bin/env"
