@@ -29,3 +29,18 @@ fi
 
 # Environment variable for ssh-agent system service
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/aditya/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/aditya/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<

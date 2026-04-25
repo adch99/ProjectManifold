@@ -120,5 +120,20 @@ export EDITOR="vim"
 . "$HOME/.cargo/env"
 
 # Setting the env vars for Intel MKL / oneAPI
-. /opt/intel/oneapi/setvars.sh > /dev/null
+# . /opt/intel/oneapi/setvars.sh > /dev/null
 # export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/aditya/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/aditya/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<
